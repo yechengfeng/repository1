@@ -16,10 +16,55 @@
     <servlet-name>CheckImgServlet</servlet-name>
     <servlet-class>com.ye.bookstore.web.servlet.CheckImgServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.ye.bookstore.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ValidateEmailServlet</servlet-name>
+    <servlet-class>com.ye.bookstore.web.servlet.ValidateEmailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ValidateUsernameServlet</servlet-name>
+    <servlet-class>ValidateUsernameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MyAccountServet</servlet-name>
+    <servlet-class>com.ye.bookstore.web.servlet.MyAccountServet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>findUserByIdServlet</servlet-name>
+    <servlet-class>com.ye.bookstore.web.servlet.findUserByIdServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
   <servlet-mapping>
     <servlet-name>CheckImgServlet</servlet-name>
     <url-pattern>/imageCode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ValidateEmailServlet</servlet-name>
+    <url-pattern>/emailservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ValidateUsernameServlet</servlet-name>
+    <url-pattern>/usernameservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MyAccountServet</servlet-name>
+    <url-pattern>/MyAccountServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>findUserByIdServlet</servlet-name>
+    <url-pattern>/findUserByIdServlet</url-pattern>
   </servlet-mapping>
   <filter>
   <filter-name>EncodingFilter</filter-name>

@@ -1,9 +1,11 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/js.js"></script>
 
 <title>bookStore注册页面</title>
 <%--导入css --%>
@@ -14,6 +16,48 @@
 		document.getElementById("img").src = "${pageContext.request.contextPath}/imageCode?time="
 				+ new Date().getTime();
 	}
+</script>s
+<script type="text/javascript">
+function ckemail(){
+ 	var email =document.getElementsByName("email")[0];	
+ 	var req =createXMLHttpRequest();
+ 	 req.onreadystatechange = function(){
+ 	if(req.readyState==4 && req.status==200){
+ 			var x = document.getElementById("email_font");
+ 		if(req.responseText=="false"){
+ 			//alert(req.responseText);
+ 			x.innerHTML="输入的邮箱非法";
+ 			x.color="red";
+ 		}else{
+ 			//alert(req.responseText);
+ 			x.innerHTML="输入的邮箱可用";
+ 			x.color="green";		}
+ 	}
+ 	};
+ 	req.open("get","${pageContext.request.contextPath }/emailservlet?email="+email.value);
+ 	req.send(null);
+ 	}
+function vkname(){
+ 	var username =document.getElementsByName("username")[0];	
+ 	var req =createXMLHttpRequest();
+ 	 req.onreadystatechange = function(){
+ 	if(req.readyState==4 && req.status==200){
+ 			var x = document.getElementById("user_font");
+ 			
+ 		if(req.responseText=="1"){
+ 			//alert(req.responseText);
+ 			x.innerHTML="输入的用户名可用";
+ 			x.color="green";
+ 		}else {
+ 			//alert(req.responseText);
+ 			x.innerHTML="输入的用户名非法";
+ 			x.color="red";		}
+ 	}
+ 	};
+ 	req.open("get","${pageContext.request.contextPath }/usernameservlet?username="+username.value);
+ 	req.send(null);
+ 	}
+
 </script>
 </head>
 
@@ -30,21 +74,19 @@
 				<tr>
 					<td style="padding:30px">
 						<h1>新会员注册${reg_msg}</h1>
-						
+
 						<table width="70%" border="0" cellspacing="2" class="upline">
 							<tr>
 								<td style="text-align:right; width:20%">会员邮箱：</td>
-								<td style="width:40%">
-								<input type="text" class="textinput"
-									name="email" /></td>
-								<td><font color="#999999">请输入有效的邮箱地址</font></td>
+								<td style="width:40%"><input type="text" class="textinput"
+									name="email"  onblur="ckemail()"/></td>
+								<td><font color="#999999" id="email_font">请输入有效的邮箱地址</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">会员名：</td>
-								<td>
-									<input type="text" class="textinput" name="username" />
+								<td><input type="text" class="textinput" name="username" onblur="vkname()"/>
 								</td>
-								<td><font color="#999999">用户名设置至少6位</font></td>
+								<td><font color="#999999" id="user_font">用户名设置至少6位</font></td>
 							</tr>
 							<tr>
 								<td style="text-align:right">密码：</td>
@@ -84,7 +126,8 @@
 						<table width="80%" border="0" cellspacing="2" class="upline">
 							<tr>
 								<td style="text-align:right; width:20%">输入校验码：</td>
-								<td style="width:50%"><input type="text" class="textinput" name="code"/>
+								<td style="width:50%"><input type="text" class="textinput"
+									name="code" />
 								</td>
 								<td>${code_msg }</td>
 							</tr>

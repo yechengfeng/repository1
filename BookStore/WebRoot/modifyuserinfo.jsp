@@ -54,18 +54,18 @@
 						<tr>
 							<td>
 								<form action="modifyUserInfoSuccess.jsp" method="post">
-									<input type="hidden" name="id" value="${user.id}">
+									<input type="hidden" name="id" value="${u.id}">
 									<table width="100%" border="0" cellspacing="2" class="upline">
 										<tr>
 											<td style="text-align:right; width:20%">会员邮箱：</td>
-											<td style="width:40%; padding-left:20px">tom@itcast.cn</td>
+											<td style="width:40%; padding-left:20px">${u.email}</td>
 											<td>&nbsp;</td>
 
 
 										</tr>
 										<tr>
 											<td style="text-align:right">会员名：</td>
-											<td style="padding-left:20px">tom</td>
+											<td style="padding-left:20px">${u.username}</td>
 											<td>&nbsp;</td>
 										</tr>
 										<tr>
@@ -92,7 +92,7 @@
 										<tr>
 											<td style="text-align:right">联系方式：</td>
 											<td colspan="2"><input name="telephone" type="text"
-												value="13888888888" class="textinput" />
+												value="${u.telephone}" class="textinput" />
 											</td>
 										</tr>
 
